@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CNC Contour Milling Simulator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main>
+    <header><div><p class="eyebrow">Manufacturing Portfolio Project</p><h1>CNC Contour Milling</h1></div><button id="downloadGcode">Download G-code</button></header>
+    <section class="dashboard">
+      <aside class="panel controls">
+        <h2>Toolpath parameters</h2>
+        <label>Part length <output id="lengthOut">120</output> mm</label><input id="length" type="range" min="60" max="180" value="120" />
+        <label>Part width <output id="widthOut">80</output> mm</label><input id="width" type="range" min="40" max="140" value="80" />
+        <label>Cut depth <output id="depthOut">8</output> mm</label><input id="depth" type="range" min="1" max="20" value="8" />
+        <label>Tool diameter <output id="toolOut">10</output> mm</label><input id="tool" type="range" min="4" max="20" value="10" />
+        <label>Step over <output id="stepOut">70</output>%</label><input id="step" type="range" min="25" max="100" value="70" />
+        <label>Feed <output id="feedOut">600</output> mm/min</label><input id="feed" type="range" min="100" max="1500" step="50" value="600" />
+        <label>Spindle <output id="rpmOut">6000</output> rpm</label><input id="rpm" type="range" min="1000" max="12000" step="500" value="6000" />
+        <h2>Profile</h2>
+        <div class="profile-buttons"><button class="active" data-profile="circle">Circle</button><button data-profile="slot">Slot</button><button data-profile="square">Square</button></div>
+        <div class="metric-grid">
+          <article><span>Toolpath length</span><strong id="toolpathLength">--</strong></article>
+          <article><span>Cycle time</span><strong id="cycleTime">--</strong></article>
+          <article><span>Rapid distance</span><strong id="rapidDistance">--</strong></article>
+          <article><span>Depth passes</span><strong id="depthPasses">--</strong></article>
+        </div>
+      </aside>
+      <section class="panel canvas-panel">
+        <canvas id="cncCanvas" width="860" height="560" aria-label="CNC toolpath visualization"></canvas>
+        <div class="legend"><span><i class="dot stock"></i>Stock</span><span><i class="dot contour"></i>Toolpath</span><span><i class="dot tooldot"></i>Tool</span></div>
+      </section>
+    </section>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
